@@ -1,0 +1,2 @@
+#define WINHIGHT 800
+#define WINWIDTH 600
