@@ -1,6 +1,11 @@
+#include <cstdint>
 #include <iostream>
 #include <SDL2/SDL.h>
 #include "include/definitions.hpp"
+
+Uint64 last_tick = 0;
+Uint64 current_tick = 0;
+float delta_time;
 
 void initSDL()
 {
@@ -38,12 +43,17 @@ bool CreateWinRen(SDL_Window*& window, SDL_Renderer*& renderer)
 	return true;
 }
 
-bool update(SDL_Rect &player)
+bool update(SDL_Rect &player, int &PvelocityX, int &PvelocityY)
 {
-	SDL_Event event;
+	SDL_Event event;	
 	
 	while (SDL_PollEvent(&event))
 	{
+		if (event.type == SDL_QUIT)
+		{
+			return false;
+		}
+
 		if (event.type == SDL_KEYDOWN)
 		{
 			switch (event.key.keysym.sym) {
@@ -51,19 +61,20 @@ bool update(SDL_Rect &player)
 					return false;
 					break;
 				case SDLK_w:
-					player.y -= 10;	
+					PvelocityY -= 2;	
 					break;
 				case SDLK_s:
-					player.y += 10;
+					PvelocityY += 2;
 					break;
 				case SDLK_a:
-					player.x -= 10;
+					PvelocityX -= 2;
 					break;
 				case SDLK_d:
-					player.x += 10;
+					PvelocityX += 2;
 					break;
 			}
 		}
+
 	}
 	return true;
 }
@@ -89,23 +100,69 @@ int main(int argc, char* argv[])
 	initSDL();
 	CreateWinRen(window, renderer);
 	
+		
 	// player vars - what did u think it fucking says it basically
 	SDL_Rect player;
 	player.x = 200;
 	player.y = 200;
 	player.w = 50;
 	player.h = 50;
+	int PvelocityX = 0;
+	int PvelocityY = 0;
+	int PvelocityCap = 10;
+
 
 	while (true)
 	{
-		if (update(player) == false)
+		last_tick = current_tick;
+		current_tick = SDL_GetTicks();
+		delta_time = (current_tick - last_tick) / 1000.0f;
+		
+		if (player.x + player.w < 0) 
+		{
+			PvelocityX -= PvelocityX;
+			player.x = 0;
+		}
+		if (player.x + player.w > 800)
+		{
+			PvelocityX -= PvelocityX;
+			player.x = (800 - player.w);
+		}
+		if (player.y + player.h < 0)
+		{
+			PvelocityY -= PvelocityY;
+			player.y = 0;
+		}
+		if (player.y + player.h > 600)
+		{
+			PvelocityY -= PvelocityY;
+			player.y = (600 - player.h);
+		}
+
+		if (update(player, PvelocityX, PvelocityY) == false)
 		{
 			return false;
+		}	
+
+		player.x += PvelocityX;
+		player.y += PvelocityY;
+
+		if (PvelocityX >= PvelocityCap)
+		{
+			PvelocityX = PvelocityCap;
 		}
+
+		if (PvelocityX >= PvelocityCap)
+		{
+			PvelocityY = PvelocityCap;
+		}
+
+	
 	
 		drawSky(renderer, 110, 40, 240, 299, 222);
 		drawRect(renderer, 255, 0, 0, player); // make sure this is at the end (renderpresent)
-
+		
+		SDL_Delay(delta_time);
 	}
 
 	SDL_DestroyWindow(window);
