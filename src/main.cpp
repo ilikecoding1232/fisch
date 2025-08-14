@@ -1,35 +1,22 @@
+// global includes
 #include <cstdint>
 #include <stdio.h>
+#include <iostream>
 #include <SDL2/SDL.h>
-#include "include/definitions.hpp"
+#include <sstream>
+#include <string>
 
-const int FPS = 60;
-const int frameDelay = 1000 / FPS; // 1000 / 60 (fps)
+// local includes
+#include "definitions.h"
+#include "boundrycheck.h"
+#include "player.h"
+#include "drawRect.h"
+
+float fps = 0.0f;
+int frameCount = 0;
 
 Uint32 framestart;
 int frametime;
-
-struct Player
-{
-	int x, y;
-	int width;
-	int height;
-
-	int speed;
-	int health;
-};
-
-Player createPlayer(int x, int y)
-{
-	Player player;
-	player.x = x;
-	player.y = y;
-	player.width = 20;
-	player.height = 20;
-	player.speed = 5;
-	player.health = 100;
-	return player;
-}
 
 void initSDL()
 {
@@ -108,34 +95,6 @@ void drawSky(SDL_Renderer *renderer, int r, int g, int b, int x, int y)
 	SDL_RenderClear(renderer);
 }
 
-void drawRect(SDL_Renderer *renderer, int r, int g, int b, Player &player)
-{
-	SDL_SetRenderDrawColor(renderer, r, g, b, 255);
-	SDL_Rect rect = {player.x, player.y, player.width, player.height};
-	SDL_RenderFillRect(renderer, &rect);
-	SDL_RenderPresent(renderer);
-}
-
-void BoundryCheck(Player &player)
-{
-	if (player.x + player.width < 0)
-	{
-		player.x = 0;
-	}
-	if (player.x + player.width > 800)
-	{
-		player.x = (800 - player.width);
-	}
-	if (player.y + player.height < 0)
-	{
-		player.y = 0;
-	}
-	if (player.y + player.height > 600)
-	{
-		player.y = (600 - player.height);
-	}
-}
-
 int main(int argc, char *argv[])
 {
 	SDL_Window *window;
@@ -148,6 +107,7 @@ int main(int argc, char *argv[])
 
 	while (true)
 	{
+
 		if (!update(player))
 		{
 			break;

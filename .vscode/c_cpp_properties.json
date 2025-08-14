@@ -3,6 +3,8 @@
         {
             "name": "Win32",
             "includePath": [
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/src",
                 "${workspaceFolder}/**",
                 "C:\\msys64\\mingw64\\include"
             ],
@@ -12,10 +14,10 @@
                 "_UNICODE"
             ],
             "windowsSdkVersion": "10.0.20348.0",
-            "compilerPath": "cl.exe",
+            "compilerPath": "gcc.exe",
             "cStandard": "c17",
             "cppStandard": "c++17",
-            "intelliSenseMode": "windows-msvc-x64"
+            "intelliSenseMode": "windows-gcc-x64"
         }
     ],
     "version": 4
