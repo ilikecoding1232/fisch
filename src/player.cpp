@@ -8,7 +8,7 @@ Player createPlayer(int x, int y)
     player.y = y;
     player.width = 20;
     player.height = 20;
-    player.speed = 50;
+    player.speed = 20;
     player.health = 100;
     return player;
 }

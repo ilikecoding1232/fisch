@@ -12,7 +12,10 @@ INCLUDE_DIR = include
 SRC = $(SRC_DIR)/main.cpp \
       $(SRC_DIR)/boundrycheck.cpp \
       $(SRC_DIR)/player.cpp \
-	  $(SRC_DIR)/drawRect.cpp
+	  $(SRC_DIR)/drawRect.cpp \
+	  $(SRC_DIR)/drawsky.cpp \
+	  $(SRC_DIR)/update.cpp \
+	  $(SRC_DIR)/initialise.cpp \
 
 # Output binary
 OUT = $(BUILD_DIR)/app.exe
@@ -23,9 +26,14 @@ build: $(SRC)
 	$(CC) $(SRC) -o $(OUT) $(CFLAGS) $(LDFLAGS)
 
 # Run the program
-r: build
+run: build
 	./$(OUT)
 
 # Clean the binary
 clean: 
 	rmdir /s /q build
+
+cleanbuild: $(SRC)
+	rmdir /s /q build
+	mkdir $(BUILD_DIR)
+	$(CC) $(SRC) -o $(OUT) $(CFLAGS) $(LDFLAGS)
