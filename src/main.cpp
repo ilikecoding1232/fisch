@@ -14,7 +14,9 @@
 #include "drawsky.h"
 #include "update.h"
 #include "initialise.h"
+#include "fpscap.h"
 
+// main function
 int main(int argc, char *argv[])
 {
 	SDL_Window *window;
@@ -27,6 +29,7 @@ int main(int argc, char *argv[])
 
 	while (true)
 	{
+		Uint32 startTime = SDL_GetTicks();
 
 		if (!update(player))
 		{
@@ -37,8 +40,24 @@ int main(int argc, char *argv[])
 
 		drawSky(renderer, 110, 40, 240);
 		drawRect(renderer, 255, 0, 0, player); // make sure this is at the end (renderpresent)
+		SDL_RenderPresent(renderer);
+
+		fpsCap(60, startTime); // Limit to 60 FPS
+
+		static int frameCount = 0;
+		static Uint32 fpsTimer = SDL_GetTicks();
+
+		// FPS counter (after delay so it reflects actual FPS)
+		frameCount++;
+		if (SDL_GetTicks() - fpsTimer >= 1000)
+		{
+			std::cout << "FPS: " << frameCount << std::endl;
+			frameCount = 0;
+			fpsTimer = SDL_GetTicks();
+		}
 	}
 
+	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 
