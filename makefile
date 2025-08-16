@@ -17,8 +17,8 @@ SRC = $(SRC_DIR)/main.cpp \
       $(SRC_DIR)/drawsky.cpp \
       $(SRC_DIR)/update.cpp \
       $(SRC_DIR)/initialise.cpp \
-      $(SRC_DIR)/fpscap.cpp
-
+      $(SRC_DIR)/fpscap.cpp \
+      $(SRC_DIR)/fpsclock.cpp
 # Output binary
 OUT = $(BUILD_DIR)/app.exe
 

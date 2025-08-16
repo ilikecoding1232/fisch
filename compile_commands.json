@@ -1,0 +1,56 @@
+[
+{
+  "directory": "C:/msys64/home/hecto/C/fisch/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -IC:/SDL2/include -IC:/msys64/home/hecto/C/fisch/include -std=gnu++17 -o CMakeFiles\\app.dir\\src\\boundrycheck.cpp.obj -c C:\\msys64\\home\\hecto\\C\\fisch\\src\\boundrycheck.cpp",
+  "file": "C:\\msys64\\home\\hecto\\C\\fisch\\src\\boundrycheck.cpp",
+  "output": "CMakeFiles\\app.dir\\src\\boundrycheck.cpp.obj"
+},
+{
+  "directory": "C:/msys64/home/hecto/C/fisch/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -IC:/SDL2/include -IC:/msys64/home/hecto/C/fisch/include -std=gnu++17 -o CMakeFiles\\app.dir\\src\\drawRect.cpp.obj -c C:\\msys64\\home\\hecto\\C\\fisch\\src\\drawRect.cpp",
+  "file": "C:\\msys64\\home\\hecto\\C\\fisch\\src\\drawRect.cpp",
+  "output": "CMakeFiles\\app.dir\\src\\drawRect.cpp.obj"
+},
+{
+  "directory": "C:/msys64/home/hecto/C/fisch/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -IC:/SDL2/include -IC:/msys64/home/hecto/C/fisch/include -std=gnu++17 -o CMakeFiles\\app.dir\\src\\drawsky.cpp.obj -c C:\\msys64\\home\\hecto\\C\\fisch\\src\\drawsky.cpp",
+  "file": "C:\\msys64\\home\\hecto\\C\\fisch\\src\\drawsky.cpp",
+  "output": "CMakeFiles\\app.dir\\src\\drawsky.cpp.obj"
+},
+{
+  "directory": "C:/msys64/home/hecto/C/fisch/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -IC:/SDL2/include -IC:/msys64/home/hecto/C/fisch/include -std=gnu++17 -o CMakeFiles\\app.dir\\src\\fpscap.cpp.obj -c C:\\msys64\\home\\hecto\\C\\fisch\\src\\fpscap.cpp",
+  "file": "C:\\msys64\\home\\hecto\\C\\fisch\\src\\fpscap.cpp",
+  "output": "CMakeFiles\\app.dir\\src\\fpscap.cpp.obj"
+},
+{
+  "directory": "C:/msys64/home/hecto/C/fisch/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -IC:/SDL2/include -IC:/msys64/home/hecto/C/fisch/include -std=gnu++17 -o CMakeFiles\\app.dir\\src\\fpsclock.cpp.obj -c C:\\msys64\\home\\hecto\\C\\fisch\\src\\fpsclock.cpp",
+  "file": "C:\\msys64\\home\\hecto\\C\\fisch\\src\\fpsclock.cpp",
+  "output": "CMakeFiles\\app.dir\\src\\fpsclock.cpp.obj"
+},
+{
+  "directory": "C:/msys64/home/hecto/C/fisch/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -IC:/SDL2/include -IC:/msys64/home/hecto/C/fisch/include -std=gnu++17 -o CMakeFiles\\app.dir\\src\\initialise.cpp.obj -c C:\\msys64\\home\\hecto\\C\\fisch\\src\\initialise.cpp",
+  "file": "C:\\msys64\\home\\hecto\\C\\fisch\\src\\initialise.cpp",
+  "output": "CMakeFiles\\app.dir\\src\\initialise.cpp.obj"
+},
+{
+  "directory": "C:/msys64/home/hecto/C/fisch/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -IC:/SDL2/include -IC:/msys64/home/hecto/C/fisch/include -std=gnu++17 -o CMakeFiles\\app.dir\\src\\main.cpp.obj -c C:\\msys64\\home\\hecto\\C\\fisch\\src\\main.cpp",
+  "file": "C:\\msys64\\home\\hecto\\C\\fisch\\src\\main.cpp",
+  "output": "CMakeFiles\\app.dir\\src\\main.cpp.obj"
+},
+{
+  "directory": "C:/msys64/home/hecto/C/fisch/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -IC:/SDL2/include -IC:/msys64/home/hecto/C/fisch/include -std=gnu++17 -o CMakeFiles\\app.dir\\src\\player.cpp.obj -c C:\\msys64\\home\\hecto\\C\\fisch\\src\\player.cpp",
+  "file": "C:\\msys64\\home\\hecto\\C\\fisch\\src\\player.cpp",
+  "output": "CMakeFiles\\app.dir\\src\\player.cpp.obj"
+},
+{
+  "directory": "C:/msys64/home/hecto/C/fisch/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -IC:/SDL2/include -IC:/msys64/home/hecto/C/fisch/include -std=gnu++17 -o CMakeFiles\\app.dir\\src\\update.cpp.obj -c C:\\msys64\\home\\hecto\\C\\fisch\\src\\update.cpp",
+  "file": "C:\\msys64\\home\\hecto\\C\\fisch\\src\\update.cpp",
+  "output": "CMakeFiles\\app.dir\\src\\update.cpp.obj"
+}
+]

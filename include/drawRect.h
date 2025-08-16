@@ -1,7 +1,7 @@
 #ifndef DRAWRECT_H
 #define DRAWRECT_H
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include "player.h"
 
 /**

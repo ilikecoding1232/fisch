@@ -2,7 +2,7 @@
 #include <cstdint>
 #include <stdio.h>
 #include <iostream>
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <sstream>
 #include <string>
 
@@ -15,6 +15,7 @@
 #include "update.h"
 #include "initialise.h"
 #include "fpscap.h"
+#include "fpsclock.h"
 
 // main function
 int main(int argc, char *argv[])
@@ -39,27 +40,16 @@ int main(int argc, char *argv[])
 		BoundryCheck(player);
 
 		drawSky(renderer, 110, 40, 240);
-		drawRect(renderer, 255, 0, 0, player); // make sure this is at the end (renderpresent)
+		drawRect(renderer, 255, 0, 0, player); 
 		SDL_RenderPresent(renderer);
 
-		fpsCap(60, startTime); // Limit to 60 FPS
-
-		static int frameCount = 0;
-		static Uint32 fpsTimer = SDL_GetTicks();
-
-		// FPS counter (after delay so it reflects actual FPS)
-		frameCount++;
-		if (SDL_GetTicks() - fpsTimer >= 1000)
-		{
-			std::cout << "FPS: " << frameCount << std::endl;
-			frameCount = 0;
-			fpsTimer = SDL_GetTicks();
-		}
+		fpsCap(120, startTime); // Limit to 60 FPS
+		fpsclock();
 	}
 
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
-
+	
 	return 0;
 }

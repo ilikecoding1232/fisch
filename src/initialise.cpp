@@ -1,6 +1,7 @@
 #include "initialise.h"
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include "definitions.h"
+#include <stdio.h>
 
 void initSDL()
 {

@@ -1,7 +1,7 @@
 #ifndef DRAWSKY_H
 #define DRAWSKY_H
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 /**
  * draws the background of the window

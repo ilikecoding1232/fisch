@@ -2,7 +2,7 @@
 #ifndef BOUNDRYCHECK_H
 #define BOUNDRYCHECK_H
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include "player.h"
 
 void BoundryCheck(Player &player);

@@ -1,7 +1,7 @@
 #ifndef INTIALISE_H
 #define INTIALISE_H
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 /**
  * initialises SDL
