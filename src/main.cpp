@@ -1,10 +1,7 @@
 // global includes
-#include <cstdint>
-#include <stdio.h>
 #include <iostream>
 #include <SDL.h>
-#include <sstream>
-#include <string>
+#include <iterator>
 
 // local includes
 #include "definitions.h"
@@ -16,6 +13,8 @@
 #include "initialise.h"
 #include "fpscap.h"
 #include "fpsclock.h"
+#include "colide.h"
+#include "minigame.h"
 
 // main function
 int main(int argc, char *argv[])
@@ -23,33 +22,61 @@ int main(int argc, char *argv[])
 	SDL_Window *window;
 	SDL_Renderer *renderer;
 
+	bool wetMovement = false;
+	int o2 = 190;
+
 	initSDL();
 	CreateWinRen(window, renderer);
-
-	Player player = createPlayer(200, 200);
+	
+	// x, y, w, h
+	// see player.h/player.cpp
+	Player player = createPlayer(200, 200, 20, 20);
+	Player lake  = createPlayer(300, 300, 400, 200);
 
 	while (true)
 	{
 		Uint32 startTime = SDL_GetTicks();
 
-		if (!update(player))
+		if (!update(player, renderer, wetMovement))
 		{
 			break;
+ 		}	
+	
+		BoundryCheck(player);
+ 
+		drawSky(renderer, 110, 40, 240);
+
+		drawRect(renderer, 40, 110, 240, lake);
+		drawRect(renderer, 255, 0, 0, player);	
+
+		if (colide_check(player, lake) == true)
+		{
+			if (o2 > 0)
+			{
+				o2--;
+			}
+			std::cout << "colision of a & b" << std::endl;
+			wetMovement = true;
+			startfishing(player, renderer, o2);
+		} 
+		else 
+		{
+			wetMovement = false;
+			if (o2 < 190)
+			{
+				o2++;
+			}
 		}
 
-		BoundryCheck(player);
-
-		drawSky(renderer, 110, 40, 240);
-		drawRect(renderer, 255, 0, 0, player); 
 		SDL_RenderPresent(renderer);
 
-		fpsCap(120, startTime); // Limit to 60 FPS
+		fpsCap(60, startTime);
 		fpsclock();
 	}
 
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
-	
+ 
 	return 0;
 }

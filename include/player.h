@@ -20,6 +20,6 @@ struct Player
     int health;
 };
 
-Player createPlayer(int x, int y);
+Player createPlayer(int x, int y, int w, int h);
 
 #endif
